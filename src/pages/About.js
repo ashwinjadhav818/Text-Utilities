@@ -1,130 +1,100 @@
-import { useState } from 'react';
-
-export default function About() {
-	const [darkMode, setDarkMode] = useState({
-		color: '#212529',
-		backgroundColor: '#fff',
-	});
-
-	const [darkModeBtnText, setDarkModeBtnText] = useState('Enable Dark Mode');
-
-	const toggleDarkMode = () => {
-		if (darkMode.color === '#fff') {
-			setDarkMode({
-				color: '#212529',
-				backgroundColor: '#fff',
-			});
-
-			setDarkModeBtnText('Enable Dark Mode');
-		} else {
-			setDarkMode({
-				color: '#fff',
-				backgroundColor: '#212529',
-				border: '1px solid #fff',
-			});
-			setDarkModeBtnText('Enable Light Mode');
-		}
+export default function About({ mode }) {
+	const currentMode = {
+		color: mode === 'dark' ? 'white' : '#042743',
+		backgroundColor: mode === 'dark' ? '#282D32' : 'white',
 	};
 
 	return (
-		<div className="container" style={darkMode}>
-			<h1 className="text-center my-3">About</h1>
-			<div className="accordion accordion-flush" id="accordionFlushExample">
-				<div className="accordion-item" style={darkMode}>
-					<h2 className="accordion-header" id="flush-headingOne">
+		<div className="container">
+			<h1
+				className="my-3 text-center"
+				style={{ color: mode === 'dark' ? 'white' : '#042743' }}
+			>
+				About Us
+			</h1>
+			<div className="accordion" id="accordionExample">
+				<div className="accordion-item">
+					<h2 className="accordion-header" id="headingOne">
 						<button
-							className="accordion-button collapsed"
+							className="accordion-button"
 							type="button"
+							style={currentMode}
 							data-bs-toggle="collapse"
-							data-bs-target="#flush-collapseOne"
-							aria-expanded="false"
-							aria-controls="flush-collapseOne"
-							style={darkMode}
+							data-bs-target="#collapseOne"
+							aria-expanded="true"
+							aria-controls="collapseOne"
 						>
-							Accordion Item #1
+							Analyze Your text
 						</button>
 					</h2>
 					<div
-						id="flush-collapseOne"
-						className="accordion-collapse collapse"
-						aria-labelledby="flush-headingOne"
-						data-bs-parent="#accordionFlushExample"
+						id="collapseOne"
+						className="accordion-collapse collapse show"
+						aria-labelledby="headingOne"
+						data-bs-parent="#accordionExample"
 					>
-						<div className="accordion-body">
-							Placeholder content for this accordion, which is intended to
-							demonstrate the <code>.accordion-flush</code> class. This is the
-							first item's accordion body.
+						<div className="accordion-body" style={currentMode}>
+							Text Utils gives you a way to analyze your text quickly and
+							efficiently. Be it word count, character count or
 						</div>
 					</div>
 				</div>
-				<div className="accordion-item" style={darkMode}>
-					<h2 className="accordion-header" id="flush-headingTwo">
+				<div className="accordion-item">
+					<h2 className="accordion-header" id="headingTwo">
 						<button
 							className="accordion-button collapsed"
+							style={currentMode}
 							type="button"
 							data-bs-toggle="collapse"
-							data-bs-target="#flush-collapseTwo"
+							data-bs-target="#collapseTwo"
 							aria-expanded="false"
-							aria-controls="flush-collapseTwo"
-							style={darkMode}
+							aria-controls="collapseTwo"
 						>
-							Accordion Item #2
+							Free to use
 						</button>
 					</h2>
 					<div
-						id="flush-collapseTwo"
+						id="collapseTwo"
 						className="accordion-collapse collapse"
-						aria-labelledby="flush-headingTwo"
-						data-bs-parent="#accordionFlushExample"
+						aria-labelledby="headingTwo"
+						data-bs-parent="#accordionExample"
 					>
-						<div className="accordion-body">
-							Placeholder content for this accordion, which is intended to
-							demonstrate the <code>.accordion-flush</code> class. This is the
-							second item's accordion body. Let's imagine this being filled with
-							some actual content.
+						<div className="accordion-body" style={currentMode}>
+							TextUtils is a free character counter tool that provides instant
+							character count & word count statistics for a given text.
+							TextUtils reports the number of words and characters. Thus it is
+							suitable for writing text with word/ character limit.
 						</div>
 					</div>
 				</div>
-				<div className="accordion-item" style={darkMode}>
-					<h2 className="accordion-header" id="flush-headingThree">
+				<div className="accordion-item">
+					<h2 className="accordion-header" id="headingThree">
 						<button
 							className="accordion-button collapsed"
+							style={currentMode}
 							type="button"
 							data-bs-toggle="collapse"
-							data-bs-target="#flush-collapseThree"
+							data-bs-target="#collapseThree"
 							aria-expanded="false"
-							aria-controls="flush-collapseThree"
-							style={darkMode}
+							aria-controls="collapseThree"
 						>
-							Accordion Item #3
+							Browser Compatible
 						</button>
 					</h2>
 					<div
-						id="flush-collapseThree"
+						id="collapseThree"
 						className="accordion-collapse collapse"
-						aria-labelledby="flush-headingThree"
-						data-bs-parent="#accordionFlushExample"
+						aria-labelledby="headingThree"
+						data-bs-parent="#accordionExample"
 					>
-						<div className="accordion-body">
-							Placeholder content for this accordion, which is intended to
-							demonstrate the <code>.accordion-flush</code> class. This is the
-							third item's accordion body. Nothing more exciting happening here
-							in terms of content, but just filling up the space to make it
-							look, at least at first glance, a bit more representative of how
-							this would look in a real-world application.
+						<div className="accordion-body" style={currentMode}>
+							This word counter software works in any web browsers such as
+							Chrome, Firefox, Internet Explorer, Safari, Opera. It suits to
+							count characters in facebook, blog, books, excel document, pdf
+							document, essays, etc.
 						</div>
 					</div>
 				</div>
-			</div>
-
-			<div className="container my-3">
-				<button
-					type="button"
-					className="btn btn-primary"
-					onClick={toggleDarkMode}
-				>
-					{darkModeBtnText}
-				</button>
 			</div>
 		</div>
 	);

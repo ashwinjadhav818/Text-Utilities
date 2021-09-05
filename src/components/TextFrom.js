@@ -1,35 +1,41 @@
 import React, { useState } from 'react';
 
-export default function TextFrom({ mode }) {
+export default function TextFrom({ mode, showAlert }) {
 	const [text, setText] = useState('This is dummy text.');
 
 	const Uppercase = () => {
 		setText(text.toUpperCase());
+		showAlert('Text Converted To Uppercase!', 'success');
 	};
 
 	const Lowercase = () => {
 		setText(text.toLowerCase());
+		showAlert('Text Converted To Lowercase!', 'success');
 	};
 
 	const capitalize = () => {
 		let firstChar = text.charAt(0);
 		let newText = firstChar.toUpperCase();
 		setText(newText + text.slice(1));
+		showAlert('First Letter Capitalize!', 'success');
 	};
 
 	const removeExtraSpaces = () => {
 		const space = text.split(/[ ]+/);
 		setText(space.join(' '));
+		showAlert('Removed Extra Spaces!', 'success');
 	};
 
 	const copyText = () => {
 		const text = document.getElementById('textBox');
 		text.select();
 		navigator.clipboard.writeText(text.value);
+		showAlert('Text Copied To Clipboard!', 'success');
 	};
 
 	const clearText = () => {
 		setText('');
+		showAlert('Text Cleared!', 'success');
 	};
 
 	const handleOnClick = (e) => {
@@ -51,28 +57,28 @@ export default function TextFrom({ mode }) {
 						onChange={handleOnClick}
 					></textarea>
 				</div>
-				<button className="btn btn-primary" onClick={Uppercase}>
+				<button className="btn btn-primary m-2" onClick={Uppercase}>
 					Convert To Uppercase
 				</button>
-				<button className="btn btn-primary mx-2" onClick={Lowercase}>
+				<button className="btn btn-primary m-2" onClick={Lowercase}>
 					Convert To Lowercase
 				</button>
-				<button className="btn btn-primary mx-2" onClick={capitalize}>
+				<button className="btn btn-primary m-2" onClick={capitalize}>
 					Capitalize The First Word
 				</button>
-				<button className="btn btn-primary mx-2" onClick={removeExtraSpaces}>
+				<button className="btn btn-primary m-2" onClick={removeExtraSpaces}>
 					Remove Extra Spaces
 				</button>
-				<button className="btn btn-primary mx-2" onClick={copyText}>
+				<button className="btn btn-primary m-2" onClick={copyText}>
 					Copy Text
 				</button>
-				<button className="btn btn-primary mx-2" onClick={clearText}>
+				<button className="btn btn-primary m-2" onClick={clearText}>
 					Clear
 				</button>
 			</div>
 			<hr />
 			<div className="container my-3">
-				<h3>Your text summary:</h3>
+				<h2>Your text summary:</h2>
 				<p>
 					{text.split(' ').length} words and {text.length} characters
 				</p>
@@ -80,7 +86,7 @@ export default function TextFrom({ mode }) {
 			</div>
 			<hr />
 			<div className="container my-3">
-				<h3>Preview:</h3>
+				<h2>Preview:</h2>
 				<p>{text.length > 0 ? text : 'Enter Text To Preview Here'}</p>
 			</div>
 		</>
