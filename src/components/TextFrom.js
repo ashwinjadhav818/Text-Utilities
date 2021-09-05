@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 
 export default function TextFrom({ mode, showAlert }) {
+	document.title = 'Text Utilities | Home';
+
 	const [text, setText] = useState('This is dummy text.');
 
 	const Uppercase = () => {

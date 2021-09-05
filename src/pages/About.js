@@ -1,4 +1,6 @@
 export default function About({ mode }) {
+	document.title = 'Text Utilities | About';
+
 	const currentMode = {
 		color: mode === 'dark' ? 'white' : '#042743',
 		backgroundColor: mode === 'dark' ? '#282D32' : 'white',
