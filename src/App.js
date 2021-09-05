@@ -3,7 +3,7 @@ import Navbar from './components/Navbar';
 import Alert from './components/Alert';
 import TextFrom from './components/TextFrom';
 import About from './pages/About';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 function App() {
 	const [mode, setMode] = useState('light');
