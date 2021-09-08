@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 
 export default function TextFrom({ mode, showAlert }) {
-	document.title = 'Text Utilities | Home';
-
 	const [text, setText] = useState('This is dummy text.');
 
 	const Uppercase = () => {
@@ -32,6 +30,7 @@ export default function TextFrom({ mode, showAlert }) {
 		const text = document.getElementById('textBox');
 		text.select();
 		navigator.clipboard.writeText(text.value);
+		document.getSelection().removeAllRanges();
 		showAlert('Text Copied To Clipboard!', 'success');
 	};
 
@@ -47,6 +46,10 @@ export default function TextFrom({ mode, showAlert }) {
 	return (
 		<>
 			<div className="container">
+				<h1 className="text-bold my-3" style={{ fontWeight: '600' }}>
+					Text Utilities - word counter, character counter, remove extra spaces,
+					etc.
+				</h1>
 				<div className="mb-3">
 					<textarea
 						className={`form-control bg-${mode} text-${
@@ -59,32 +62,62 @@ export default function TextFrom({ mode, showAlert }) {
 						onChange={handleOnClick}
 					></textarea>
 				</div>
-				<button className="btn btn-primary m-2" onClick={Uppercase}>
+				<button
+					className="btn btn-primary me-2 my-2"
+					disabled={text.length === 0}
+					onClick={Uppercase}
+				>
 					Convert To Uppercase
 				</button>
-				<button className="btn btn-primary m-2" onClick={Lowercase}>
+				<button
+					className="btn btn-primary me-2 my-2"
+					disabled={text.length === 0}
+					onClick={Lowercase}
+				>
 					Convert To Lowercase
 				</button>
-				<button className="btn btn-primary m-2" onClick={capitalize}>
+				<button
+					className="btn btn-primary me-2 my-2"
+					disabled={text.length === 0}
+					onClick={capitalize}
+				>
 					Capitalize The First Word
 				</button>
-				<button className="btn btn-primary m-2" onClick={removeExtraSpaces}>
+				<button
+					className="btn btn-primary me-2 my-2"
+					disabled={text.length === 0}
+					onClick={removeExtraSpaces}
+				>
 					Remove Extra Spaces
 				</button>
-				<button className="btn btn-primary m-2" onClick={copyText}>
+				<button
+					className="btn btn-primary me-2 my-2"
+					disabled={text.length === 0}
+					onClick={copyText}
+				>
 					Copy Text
 				</button>
-				<button className="btn btn-primary m-2" onClick={clearText}>
-					Clear
+				<button
+					className="btn btn-danger me-2"
+					disabled={text.length === 0}
+					onClick={clearText}
+				>
+					Clear Text
 				</button>
 			</div>
 			<hr />
 			<div className="container my-3">
 				<h2>Your text summary:</h2>
 				<p>
-					{text.split(' ').length} words and {text.length} characters
+					{text.split(' ').filter((element) => element.length !== 0).length}{' '}
+					words and {text.length} characters
 				</p>
-				<p>{0.008 * text.split(' ').length} minutes to read</p>
+				<p>
+					{0.008 *
+						text.split(' ').filter((element) => element.length !== 0)
+							.length}{' '}
+					minutes to read
+				</p>
 			</div>
 			<hr />
 			<div className="container my-3">

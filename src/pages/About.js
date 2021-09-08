@@ -1,6 +1,4 @@
 export default function About({ mode }) {
-	document.title = 'Text Utilities | About';
-
 	const currentMode = {
 		color: mode === 'dark' ? 'white' : '#042743',
 		backgroundColor: mode === 'dark' ? '#282D32' : 'white',
@@ -9,8 +7,11 @@ export default function About({ mode }) {
 	return (
 		<div className="container">
 			<h1
-				className="my-3 text-center"
-				style={{ color: mode === 'dark' ? 'white' : '#042743' }}
+				className="my-3"
+				style={{
+					color: mode === 'dark' ? 'white' : '#0427430',
+					fontWeight: '600',
+				}}
 			>
 				About Us
 			</h1>

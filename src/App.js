@@ -37,9 +37,8 @@ function App() {
 
 	return (
 		<Router>
-			<Navbar title="Text Utils" mode={mode} toggleMode={toggleMode} />
+			<Navbar title="Text Utilities" mode={mode} toggleMode={toggleMode} />
 			<Alert alert={alert} />
-			<h1 className="text-center my-3">Text Utils</h1>
 			<Switch>
 				<Route exact path="/about">
 					<About mode={mode} />
