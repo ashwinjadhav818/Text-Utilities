@@ -27,10 +27,7 @@ export default function TextFrom({ mode, accent, showAlert }) {
 	};
 
 	const copyText = () => {
-		const text = document.getElementById('textBox');
-		text.select();
-		navigator.clipboard.writeText(text.value);
-		document.getSelection().removeAllRanges();
+		navigator.clipboard.writeText(text);
 		showAlert('Text copied to clipboard!', 'success');
 	};
 
@@ -109,7 +106,7 @@ export default function TextFrom({ mode, accent, showAlert }) {
 			<div className="container my-3">
 				<h2>Your text summary:</h2>
 				<p>
-					{text.split(' ').filter((element) => element.length !== 0).length}{' '}
+					{text.split(/\s+/).filter((element) => element.length !== 0).length}{' '}
 					words and {text.length} characters
 				</p>
 				<p>

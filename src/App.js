@@ -38,7 +38,6 @@ function App() {
 
 	const accentColor = (cls) => {
 		setAccent(cls);
-		console.log(accent);
 	};
 
 	return (
