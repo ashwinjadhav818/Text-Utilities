@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 function App() {
 	const [mode, setMode] = useState('light');
 	const [alert, setAlert] = useState(null);
+	const [accent, setAccent] = useState('primary');
 
 	const showAlert = (message, type) => {
 		setAlert({
@@ -26,18 +27,28 @@ function App() {
 			document.body.classList.toggle('bg-dark');
 			document.body.classList.toggle('text-light');
 
-			showAlert('Dark Mode Has Been Enabled', 'success');
+			showAlert('Dark mode has been enabled!', 'success');
 		} else {
 			setMode('light');
 			document.body.classList.toggle('bg-dark');
 			document.body.classList.toggle('text-light');
-			showAlert('Light Mode Has Been Enabled', 'success');
+			showAlert('Light mode has been enabled!', 'success');
 		}
+	};
+
+	const accentColor = (cls) => {
+		setAccent(cls);
+		console.log(accent);
 	};
 
 	return (
 		<Router>
-			<Navbar title="Text Utilities" mode={mode} toggleMode={toggleMode} />
+			<Navbar
+				title="Text Utilities"
+				mode={mode}
+				toggleMode={toggleMode}
+				accentColor={accentColor}
+			/>
 			<Alert alert={alert} />
 			<Switch>
 				<Route exact path="/about">
@@ -45,7 +56,7 @@ function App() {
 				</Route>
 				<Route exact path="/">
 					<div className="container my-3">
-						<TextFrom showAlert={showAlert} mode={mode} />
+						<TextFrom showAlert={showAlert} mode={mode} accent={accent} />
 					</div>
 				</Route>
 			</Switch>

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-export default function Navbar({ title, mode, toggleMode }) {
+export default function Navbar({ title, mode, toggleMode, accentColor }) {
 	return (
 		<nav className={`navbar navbar-expand-lg navbar-${mode} bg-${mode}`}>
 			<div className="container-fluid">
@@ -42,6 +42,29 @@ export default function Navbar({ title, mode, toggleMode }) {
 							Search
 						</button>
 					</form> */}
+					<div className="d-flex mx-2">
+						<div
+							className="bg-primary rounded mx-2"
+							onClick={() => {
+								accentColor('primary');
+							}}
+							style={{ height: '30px', width: '30px', cursor: 'pointer' }}
+						></div>
+						<div
+							className="bg-success rounded mx-2"
+							onClick={() => {
+								accentColor('success');
+							}}
+							style={{ height: '30px', width: '30px', cursor: 'pointer' }}
+						></div>
+						<div
+							className="bg-warning rounded mx-2"
+							onClick={() => {
+								accentColor('warning');
+							}}
+							style={{ height: '30px', width: '30px', cursor: 'pointer' }}
+						></div>
+					</div>
 					<div
 						className={`form-check form-switch text-${
 							mode === 'light' ? 'dark' : 'light'

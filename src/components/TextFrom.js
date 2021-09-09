@@ -1,29 +1,29 @@
 import React, { useState } from 'react';
 
-export default function TextFrom({ mode, showAlert }) {
+export default function TextFrom({ mode, accent, showAlert }) {
 	const [text, setText] = useState('This is dummy text.');
 
 	const Uppercase = () => {
 		setText(text.toUpperCase());
-		showAlert('Text Converted To Uppercase!', 'success');
+		showAlert('Text converted to uppercase!', 'success');
 	};
 
 	const Lowercase = () => {
 		setText(text.toLowerCase());
-		showAlert('Text Converted To Lowercase!', 'success');
+		showAlert('Text converted to lowercase!', 'success');
 	};
 
 	const capitalize = () => {
 		let firstChar = text.charAt(0);
 		let newText = firstChar.toUpperCase();
 		setText(newText + text.slice(1));
-		showAlert('First Letter Capitalize!', 'success');
+		showAlert('First letter capitalize!', 'success');
 	};
 
 	const removeExtraSpaces = () => {
 		const space = text.split(/[ ]+/);
 		setText(space.join(' '));
-		showAlert('Removed Extra Spaces!', 'success');
+		showAlert('Removed extra spaces!', 'success');
 	};
 
 	const copyText = () => {
@@ -31,12 +31,12 @@ export default function TextFrom({ mode, showAlert }) {
 		text.select();
 		navigator.clipboard.writeText(text.value);
 		document.getSelection().removeAllRanges();
-		showAlert('Text Copied To Clipboard!', 'success');
+		showAlert('Text copied to clipboard!', 'success');
 	};
 
 	const clearText = () => {
 		setText('');
-		showAlert('Text Cleared!', 'success');
+		showAlert('Text cleared!', 'success');
 	};
 
 	const handleOnClick = (e) => {
@@ -63,35 +63,35 @@ export default function TextFrom({ mode, showAlert }) {
 					></textarea>
 				</div>
 				<button
-					className="btn btn-primary me-2 my-2"
+					className={`btn btn-${accent} me-2 my-2`}
 					disabled={text.length === 0}
 					onClick={Uppercase}
 				>
 					Convert To Uppercase
 				</button>
 				<button
-					className="btn btn-primary me-2 my-2"
+					className={`btn btn-${accent} me-2 my-2`}
 					disabled={text.length === 0}
 					onClick={Lowercase}
 				>
 					Convert To Lowercase
 				</button>
 				<button
-					className="btn btn-primary me-2 my-2"
+					className={`btn btn-${accent} me-2 my-2`}
 					disabled={text.length === 0}
 					onClick={capitalize}
 				>
 					Capitalize The First Word
 				</button>
 				<button
-					className="btn btn-primary me-2 my-2"
+					className={`btn btn-${accent} me-2 my-2`}
 					disabled={text.length === 0}
 					onClick={removeExtraSpaces}
 				>
 					Remove Extra Spaces
 				</button>
 				<button
-					className="btn btn-primary me-2 my-2"
+					className={`btn btn-${accent} me-2 my-2`}
 					disabled={text.length === 0}
 					onClick={copyText}
 				>
