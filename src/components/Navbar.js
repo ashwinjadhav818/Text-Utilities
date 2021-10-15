@@ -42,23 +42,23 @@ export default function Navbar({ title, mode, toggleMode, accentColor }) {
 							Search
 						</button>
 					</form> */}
-					<div className="d-flex mx-2">
+					<div className="d-flex mx-lg-2 my-2">
 						<div
-							className="bg-primary rounded mx-2"
+							className="bg-primary rounded mx-lg-2"
 							onClick={() => {
 								accentColor('primary');
 							}}
 							style={{ height: '30px', width: '30px', cursor: 'pointer' }}
 						></div>
 						<div
-							className="bg-success rounded mx-2"
+							className="bg-success rounded mx-lg-2 mx-2"
 							onClick={() => {
 								accentColor('success');
 							}}
 							style={{ height: '30px', width: '30px', cursor: 'pointer' }}
 						></div>
 						<div
-							className="bg-warning rounded mx-2"
+							className="bg-warning rounded mx-lg-2"
 							onClick={() => {
 								accentColor('warning');
 							}}
